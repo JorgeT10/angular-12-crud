@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Tutorial } from '../models/tutorial.model';
+import { Persona } from '../models/persona.model';
 
 const baseUrl = 'http://localhost:8080/api/tutorials';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TutorialService {
+export class PersonaService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Tutorial[]> {
-    return this.http.get<Tutorial[]>(baseUrl);
+  getAll(): Observable<Persona[]> {
+    return this.http.get<Persona[]>(baseUrl);
   }
 
-  get(id: any): Observable<Tutorial> {
+  get(id: any): Observable<Persona> {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
@@ -36,7 +36,7 @@ export class TutorialService {
     return this.http.delete(baseUrl);
   }
 
-  findByTitle(title: any): Observable<Tutorial[]> {
-    return this.http.get<Tutorial[]>(`${baseUrl}?title=${title}`);
+  findByTitle(title: any): Observable<Persona[]> {
+    return this.http.get<Persona[]>(`${baseUrl}?title=${title}`);
   }
 }

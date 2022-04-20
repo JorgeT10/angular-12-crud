@@ -3,46 +3,28 @@
     <h4>Tutorial</h4>
     <form>
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">Nombre</label>
         <input
           type="text"
           class="form-control"
           id="title"
-          [(ngModel)]="currentTutorial.title"
+          [(ngModel)]="currentTutorial.nombre"
           name="title"
         />
       </div>
       <div class="form-group">
-        <label for="description">Description</label>
+        <label for="description">Apellido</label>
         <input
           type="text"
           class="form-control"
           id="description"
-          [(ngModel)]="currentTutorial.description"
+          [(ngModel)]="currentTutorial.apellido"
           name="description"
         />
-      </div>
-
-      <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentTutorial.published ? "Published" : "Pending" }}
-      </div>
+      </div>      
     </form>
 
-    <button
-      class="badge badge-primary mr-2"
-      *ngIf="currentTutorial.published"
-      (click)="updatePublished(false)"
-    >
-      UnPublish
-    </button>
-    <button
-      *ngIf="!currentTutorial.published"
-      class="badge badge-primary mr-2"
-      (click)="updatePublished(true)"
-    >
-      Publish
-    </button>
+   
 
     <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
       Delete

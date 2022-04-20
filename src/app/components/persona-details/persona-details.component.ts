@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { TutorialService } from 'src/app/services/tutorial.service';
+import { PersonaService } from 'src/app/services/persona.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Tutorial } from 'src/app/models/tutorial.model';
+import { Persona } from 'src/app/models/persona.model';
 
 @Component({
-  selector: 'app-tutorial-details',
-  templateUrl: './tutorial-details.component.html',
-  styleUrls: ['./tutorial-details.component.css']
+  selector: 'app-persona-details',
+  templateUrl: './persona-details.component.html',
+  styleUrls: ['./persona-details.component.css']
 })
-export class TutorialDetailsComponent implements OnInit {
+export class PersonaDetailsComponent implements OnInit {
 
-  currentTutorial: Tutorial = {
-    title: '',
-    description: '',
-    published: false
+  currentTutorial: Persona = {
+    nombre: '',
+    apellido: '',
+    email: false
   };
   message = '';
 
   constructor(
-    private tutorialService: TutorialService,
+    private tutorialService: PersonaService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -41,8 +41,8 @@ export class TutorialDetailsComponent implements OnInit {
 
   updatePublished(status: boolean): void {
     const data = {
-      title: this.currentTutorial.title,
-      description: this.currentTutorial.description,
+      title: this.currentTutorial.nombre,
+      description: this.currentTutorial.apellido,
       published: status
     };
 
@@ -51,7 +51,7 @@ export class TutorialDetailsComponent implements OnInit {
     this.tutorialService.update(this.currentTutorial.id, data)
       .subscribe(
         response => {
-          this.currentTutorial.published = status;
+          this.currentTutorial.email = status;
           console.log(response);
           this.message = response.message ? response.message : 'The status was updated successfully!';
         },
